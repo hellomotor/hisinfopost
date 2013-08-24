@@ -1,0 +1,4 @@
+LIBRARY hisinfopost
+EXPORTS 
+	postPres @ 1
+	confirmPres @ 2

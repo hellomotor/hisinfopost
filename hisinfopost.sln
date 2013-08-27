@@ -3,6 +3,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hisinfopost", "hisinfopost.
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcproj", "{7D568F5A-6ADE-4973-B627-F5810BB6EC38}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -13,6 +17,10 @@ Global
 		{87266739-A084-4C41-919E-81EC92EAFED9}.Debug.Build.0 = Debug|Win32
 		{87266739-A084-4C41-919E-81EC92EAFED9}.Release.ActiveCfg = Release|Win32
 		{87266739-A084-4C41-919E-81EC92EAFED9}.Release.Build.0 = Release|Win32
+		{7D568F5A-6ADE-4973-B627-F5810BB6EC38}.Debug.ActiveCfg = Debug|Win32
+		{7D568F5A-6ADE-4973-B627-F5810BB6EC38}.Debug.Build.0 = Debug|Win32
+		{7D568F5A-6ADE-4973-B627-F5810BB6EC38}.Release.ActiveCfg = Release|Win32
+		{7D568F5A-6ADE-4973-B627-F5810BB6EC38}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

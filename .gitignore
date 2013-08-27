@@ -1,5 +1,6 @@
 # Debug output directory
 Debug
+test/Debug
 
 # Compiled Object files
 *.slo

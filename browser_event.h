@@ -39,6 +39,10 @@ public: // IDispatch methods
 	{
 	}
 
+	void setUnloaded() {
+		hasLoaded = FALSE;
+	}
+
 	STDMETHODIMP QueryInterface(REFIID riid, void **ppvObject)
 	{
 		HRESULT hr = E_NOINTERFACE;
@@ -195,50 +199,6 @@ public:
 	}
 
 protected:
-
-	/*HRESULT LoadWebBrowserFromStream(IWebBrowser2* pWebBrowser,TCHAR* szHTMLText)
-	{
-	IUnknown* pUnkBrowser = NULL;    	 
-	HRESULT hr;
-
-	hr = pWebBrowser->QueryInterface(IID_IUnknown,(void**)&pUnkBrowser);    
-	if (SUCCEEDED(hr))    
-	{                       
-	size_t ulLength = _tcslen(szHTMLText) * sizeof(TCHAR);                
-	HGLOBAL hHTMLText = GlobalAlloc(GPTR,ulLength + sizeof(TCHAR));                    
-	if (hHTMLText != NULL)               
-	{                    
-	_tcsncpy((TCHAR*)hHTMLText,szHTMLText,ulLength);
-
-	IStream* pStream = NULL;  
-	hr = CreateStreamOnHGlobal(hHTMLText,TRUE,&pStream);           
-	if (SUCCEEDED(hr))                
-	{     
-	IHTMLDocument* pHtmlDoc = NULL;
-	IPersistStreamInit* pPersistStreamInit = NULL;
-	hr = pWebBrowser->get_Document((IDispatch**)&pHtmlDoc);    
-	if (SUCCEEDED(hr))    
-	{
-	hr = pHtmlDoc->QueryInterface(IID_IPersistStreamInit,(void**)&pPersistStreamInit);        
-	if (SUCCEEDED(hr))        
-	{
-	hr = pPersistStreamInit->InitNew();            
-	if (SUCCEEDED(hr))            
-	{
-	hr = pPersistStreamInit->Load(pStream); 
-	}            
-	pPersistStreamInit->Release();       
-	}  
-	pHtmlDoc->Release();
-	}
-	pStream->Release();  
-	}      
-	}          
-	pUnkBrowser->Release();  
-	}
-
-	return hr;
-	}*/
 
 	HRESULT LoadWebBrowserFromStream(IWebBrowser* pWebBrowser, IStream* pStream)
 	{

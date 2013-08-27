@@ -134,14 +134,16 @@ BOOL CALLBACK DlgProc(HWND hwnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 {
 	IWebBrowser2* iWebBrowser;
 	VARIANT varMyURL;
-	static CAxWindow WinContainer;
+	CAxWindow WinContainer;
 	LPOLESTR pszName = OLESTR("shell.Explorer.2");
 	RECT rc;
+	BOOL result = FALSE;
 
 
 	switch(Msg)
 	{
 	case WM_INITDIALOG:
+		browserEventListener.setUnloaded();
 		GetClientRect(hwnd, &rc);
 		WinContainer.Create(hwnd, rc, 0,WS_CHILD |WS_VISIBLE);
 		WinContainer.CreateControl(pszName);
@@ -149,34 +151,33 @@ BOOL CALLBACK DlgProc(HWND hwnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 		VariantInit(&varMyURL);
 		varMyURL.vt = VT_BSTR; 
 		varMyURL.bstrVal = SysAllocString(OLESTR("about:blank"));
-		//varMyURL.bstrVal = SysAllocString(OLESTR("http://www.baidu.com"));
 		browserEventListener.Advise(hwnd, iWebBrowser);
 		iWebBrowser-> Navigate2(&varMyURL,0,0,0,0);
 
 		VariantClear(&varMyURL);
 		iWebBrowser-> Release(); 
-
-		return TRUE;
-
+		result = TRUE;
+		break;
 	case WM_HTML_ACTION:
 		switch (wParam)
 		{
 		case ACTION_COMMIT:
 			EndDialog(hwnd, ACTION_COMMIT);
-			return TRUE;
+			result = TRUE;
 		case ACTION_RETURN:
 			EndDialog(hwnd, ACTION_RETURN);
-			return TRUE;
+			result = TRUE;
 		}
+		break;
 	case WM_COMMAND:
 		switch(wParam)
 		{
 		case IDCANCEL:
 			EndDialog(hwnd, ACTION_RETURN);
-			return TRUE;
+			result = TRUE;
 		}
 		break;
 	}
 
-	return FALSE;
+	return result;
 }

@@ -124,10 +124,13 @@ HISINFOPOST_API BOOL confirmPres(const char *url, const char *pres_no, int post_
 	char data[100] = { 0 };
 	sprintf(data, "pres_no=%s&post_type=%d", pres_no, post_type);
 	static TCHAR hdrs[] = _T("Content-Type: text/html");
-	if (ERROR_SUCCESS != httpPost(urls, hdrs, data))
-		return FALSE;
+	BOOL result = TRUE;
 
-	return TRUE;
+	if (ERROR_SUCCESS != httpPost(urls, hdrs, data))
+		result = FALSE;
+	url_free(urls);
+
+	return result;
 }
 
 BOOL CALLBACK DlgProc(HWND hwnd,UINT Msg,WPARAM wParam,LPARAM lParam)

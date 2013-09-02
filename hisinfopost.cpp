@@ -92,7 +92,7 @@ int httpPost(url_schema *urls, const char *headers, const char *data)
 	return rc;
 }
 
-HISINFOPOST_API int postPres(const char *url, const char *xml, int post_type, const char *encoding)
+HISINFOPOST_API int PASCAL postPres(const char *url, const char *xml, int post_type, const char *encoding)
 {
 	int rc = 0;
 	url_schema *urls = url_parse(url);
@@ -116,7 +116,7 @@ HISINFOPOST_API int postPres(const char *url, const char *xml, int post_type, co
 	return rc;
 }
 
-HISINFOPOST_API BOOL confirmPres(const char *url, const char *pres_no, int post_type)
+HISINFOPOST_API BOOL PASCAL confirmPres(const char *url, const char *pres_no, int post_type)
 {
 	url_schema *urls = url_parse(url);
 	if (!urls) 
@@ -167,9 +167,11 @@ BOOL CALLBACK DlgProc(HWND hwnd,UINT Msg,WPARAM wParam,LPARAM lParam)
 		case ACTION_COMMIT:
 			EndDialog(hwnd, ACTION_COMMIT);
 			result = TRUE;
+			break;
 		case ACTION_RETURN:
 			EndDialog(hwnd, ACTION_RETURN);
 			result = TRUE;
+			break;
 		}
 		break;
 	case WM_COMMAND:

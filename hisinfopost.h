@@ -11,6 +11,6 @@
 #endif
 
 
-HISINFOPOST_API int postPres(const char *url, const char *data, int post_type, const char *encoding);
+HISINFOPOST_API int PASCAL postPres(const char *url, const char *data, int post_type, const char *encoding);
 
-HISINFOPOST_API BOOL confirmPres(const char *url, const char *pres_no, int post_type);
+HISINFOPOST_API BOOL PASCAL confirmPres(const char *url, const char *pres_no, int post_type);

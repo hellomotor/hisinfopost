@@ -16,10 +16,10 @@ namespace WindowsApplication1
             InitializeComponent();
         }
 
-        [DllImport("hisinfopost.dll", EntryPoint = "postPres", CharSet = CharSet.Ansi)]
+        [DllImport("hisinfopost.dll", EntryPoint = "postPres", CharSet = CharSet.Ansi, CallingConvention=CallingConvention.StdCall)]
         public static extern int postPres(String url, String xml, int post_type, String encoding);
 
-        [DllImport("hisinfopost.dll", EntryPoint = "confirmPres", CharSet = CharSet.Ansi)]
+        [DllImport("hisinfopost.dll", EntryPoint = "confirmPres", CharSet = CharSet.Ansi, CallingConvention=CallingConvention.StdCall)]
         public static extern bool confirmPres(String url, String pres_no, int post_type);
 
         private void button1_Click(object sender, EventArgs e)
